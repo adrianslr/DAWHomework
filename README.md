@@ -1,5 +1,7 @@
 # DAW Homework
 
+TODO:
+
 - in cazul in care o categorie are mai multe subiecte de discutie, acestea vor fi afisate paginat. (1.0p). 
 - discutiile sau raspunsurile vor fi afisate sortat in urma unor criterii stabilite de utilizator. (0.5p)
 - forumul va avea un motor de cautare propriu cu ajutorul caruia utilizatorii pot cauta diferite subiecte de discutie sau raspunsuri. (0.5p)
