@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "View";
+}
+
+<h2>
+    Category @ViewBag.category.Name
+
+    @if (Request.IsAuthenticated)
+    {
+        <a class="btn btn-default" href="/Categories/Post/@ViewBag.category.CategoryID">Add Discussion</a>
+    }
+
+    <a href="/" class="btn btn-danger">Back</a>
+
+</h2>
+
+<br />
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="list-group">
+            @foreach (var discussion in ViewBag.discussions)
+            {
+                <a href="/Discussions/View/@discussion.DiscussionID" class="list-group-item">
+                    <span class="badge">@discussion.Replies.Count</span>
+                    <h4>@discussion.Title</h4>
+                    <h6>by <b>@discussion.Author.Email</b> on <b>@discussion.Date</b></h6>
+                </a>
+            }
+        </div>
+    </div>
+</div>

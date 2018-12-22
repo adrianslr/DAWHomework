@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "Manage";
+}
+
+<h2>User Administration</h2>
+
+<div>
+    <h4>Change your account settings</h4>
+    <br />
+
+    @Html.ActionLink("Change your password", "ChangePassword")
+
+    <hr />
+</div>
+
+<div>
+    <h4>Change your profile settings</h4>
+    <br />
+
+    <form action="/Manage/UpdateProfile" method="post">
+
+        <div class="form-group">
+            <label class="col-md-2 control-label">Camp1</label>
+          
+            <input class="form-control" type="text" id="camp1" name="camp1" value="@ViewBag.user.Camp1" />
+        </div>
+
+        <input type="submit" value="Update" class="btn btn-default" />
+    </form>
+
+</div>
+
+
+@if (ViewBag.isAdministrator == true)
+{
+    <br />
+    <br />
+    <br />
+
+    <h2>Admin Panel</h2>
+
+    <div>
+        <h4>Website Administration</h4>
+        <br />
+
+        @Html.Partial("_AdministratePartial")
+    </div>
+}
+

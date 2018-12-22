@@ -1,0 +1,123 @@
+﻿<h5>CRUD Categories</h5>
+
+<form class="navbar-form navbar-left" role="search" action="/Manage/AddCategory" method="post">
+    <div class="form-group">
+        <input id="Name" name="Name" type="text" class="form-control" placeholder="Category name">
+    </div>
+    <button type="submit" class="btn btn-default">Add new</button>
+</form>
+
+<br />
+<br />
+
+<table class="table">
+    <tr>
+        <td>#</td>
+        <td>Name</td>
+        <td>Actions</td>
+    </tr>
+
+    @{int i = 1;}
+    @foreach (var category in ViewBag.categories)
+    {
+        <tr>
+            <td>@i</td>
+
+            <td>
+                <form method="post" action="/Manage/UpdateCategory">
+                    <input type="hidden" id="ID" name="ID" value="@category.CategoryID" />
+                    <div class="form-group">
+                        <input class="form-control type="text" id="Name" name="Name" value="@category.Name" />
+                    </div>
+                    <button type="submit" class="btn btn-default">Update Name</button>
+                </form>
+</td>
+            <td>
+                <form method="post" action="/Manage/DeleteCategory/@category.CategoryID">
+                    @Html.HttpMethodOverride(HttpVerbs.Delete)
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </td>
+</tr>
+
+        i++;
+    }
+</table>
+
+<h5>CRUD Administrators</h5>
+
+<form class="navbar-form navbar-left" role="search" action="/Manage/AddAdministrator" method="post">
+    <div class="form-group">
+        <input id="email" name="email" type="text" class="form-control" placeholder="User email">
+    </div>
+    <button type="submit" class="btn btn-default">Add admin</button>
+</form>
+
+<br />
+<br />
+
+<table class="table">
+    <tr>
+        <td>#</td>
+        <td>Email</td>
+        <td>Actions</td>
+    </tr>
+
+    @{int j = 1;}
+    @foreach (var admin in ViewBag.admins)
+    {
+        <tr>
+            <td>@j</td>
+
+            <td>@admin.Email</td>
+            <td>
+                <form method="post" action="/Manage/DeleteAdministrator">
+                    @Html.HttpMethodOverride(HttpVerbs.Delete)
+                    <input type="hidden" id="id" name="id" value="@admin.Id" />
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </td>
+        </tr>
+
+        j++;
+    }
+</table>
+
+<h5>CRUD Moderators</h5>
+
+<form class="navbar-form navbar-left" role="search" action="/Manage/AddModerator" method="post">
+    <div class="form-group">
+        <input id="email" name="email" type="text" class="form-control" placeholder="User email">
+    </div>
+    <button type="submit" class="btn btn-default">Add moderator</button>
+</form>
+
+<br />
+<br />
+
+<table class="table">
+    <tr>
+        <td>#</td>
+        <td>Email</td>
+        <td>Actions</td>
+    </tr>
+
+    @{int k = 1;}
+    @foreach (var mod in ViewBag.moderators)
+    {
+        <tr>
+            <td>@k</td>
+
+            <td>@mod.Email</td>
+            <td>
+                <form method="post" action="/Manage/DeleteModerator">
+                    @Html.HttpMethodOverride(HttpVerbs.Delete)
+                    <input type="hidden" id="id" name="id" value="@mod.Id" />
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </td>
+        </tr>
+
+        k++;
+    }
+</table>
